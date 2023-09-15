@@ -1,30 +1,35 @@
 package bca;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-
-/**
- * JavaFX Application
- */
 public class App extends Application {
-
     @Override
-    public void start(Stage stage) {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
+    public void start(Stage primaryStage) {
+        BorderPane pane = new BorderPane();
 
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(new StackPane(label), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+        pane.setTop(new CustomPane("Top"));
+        pane.setRight(new CustomPane("Right"));
+        pane.setBottom(new CustomPane("Bottom"));
+        pane.setLeft(new CustomPane("Left"));
+        pane.setCenter(new CustomPane("Center"));
+
+        Scene scene = new Scene(pane, 500, 250);
+        primaryStage.setTitle("ShowBorderPane");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
+}
 
-    public static void main(String[] args) {
-        launch();
+class CustomPane extends StackPane {
+    public CustomPane(String title) {
+        getChildren().add(new Label(title));
+        setStyle("-fx-border-color: red");
+        setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
     }
-
 }
