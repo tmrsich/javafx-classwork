@@ -1,35 +1,41 @@
 package bca;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.geometry.Insets;
 import javafx.stage.Stage;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.FontPosture;
 
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
-        BorderPane pane = new BorderPane();
+        Pane pane = new Pane();
+        pane.setPadding(new Insets(5, 5, 5, 5));
+        Text text1 = new Text(20, 20, "Programming is fun");
+        text1.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 15));
+        pane.getChildren().add(text1);
 
-        pane.setTop(new CustomPane("Top"));
-        pane.setRight(new CustomPane("Right"));
-        pane.setBottom(new CustomPane("Bottom"));
-        pane.setLeft(new CustomPane("Left"));
-        pane.setCenter(new CustomPane("Center"));
+        Text text2 = new Text(60, 60, "Programming is fun\nDisplay text");
+        pane.getChildren().add(text2);
 
-        Scene scene = new Scene(pane, 500, 250);
-        primaryStage.setTitle("ShowBorderPane");
+        Text text3 = new Text(10, 100, "Programming is fun\nDisplay text");
+        text3.setFill(Color.RED);
+        text3.setUnderline(true);
+        text3.setStrikethrough(true);
+        pane.getChildren().add(text3);
+
+        Scene scene = new Scene(pane);
+        primaryStage.setTitle("ShowText");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-}
 
-class CustomPane extends StackPane {
-    public CustomPane(String title) {
-        getChildren().add(new Label(title));
-        setStyle("-fx-border-color: red");
-        setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
+    public static void main(String[] args) {
+        Application.launch(args);
     }
 }
