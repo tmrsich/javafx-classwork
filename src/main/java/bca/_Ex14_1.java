@@ -18,7 +18,6 @@ public class _Ex14_1 extends Application {
                     "file:images/uk.gif",
                     "file:images/ca.gif",
                     "file:images/china.gif",
-                    "file:images/korea.gif"
                 };
 
                 int row = 0;
@@ -26,7 +25,7 @@ public class _Ex14_1 extends Application {
 
                 for (int i = 0; i < 4; i++) {
                     flagViews[i] = new ImageView(new Image(flagPaths[i]));
-                    flagViews[i].setFitWidth(375);
+                    flagViews[i].setFitWidth(415);
                     flagViews[i].setFitHeight(250);
                     gridpane.add(flagViews[i], row, col);
                     
