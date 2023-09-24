@@ -8,7 +8,25 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 
-public class _Ex14_11 extends Application {    
+public class _Ex14_11 extends Application {
+    public static void main(String[] args) {
+        Application.launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        Pane p = new Pane();
+        p.getChildren().add(getBaseEllipse());
+        p.getChildren().add(getEyePupil(250, 250));
+        p.getChildren().add(getEyePupil(440, 250));
+        p.getChildren().add(getNose(350, 300,  375, 400, 325, 400));
+        
+        Scene scene = new Scene(p, 700, 700);
+        primaryStage.setTitle("Exercise 14.11");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    
     public Ellipse getBaseEllipse() {
         Ellipse ellipse = new Ellipse();
         ellipse.setCenterX(350);
@@ -31,32 +49,10 @@ public class _Ex14_11 extends Application {
         return ellipse;
     }
 
-    public Polygon getNose() {
+    public Polygon getNose(double x1, double y1, double x2, double y2, double x3, double y3) {
         Polygon triangle = new Polygon();
-        triangle.getPoints().addAll(new Double[]{
-            350.0, 300.0,
-            375.0, 400.0,
-            325.0, 400.0 
-        });
+        triangle.getPoints().addAll(x1, y1, x2, y2, x3, y3);
         triangle.setFill(Color.BLACK);
         return triangle;
-    }
-
-
-    @Override
-    public void start(Stage primaryStage) {
-        Pane p = new Pane();
-        p.getChildren().add(getBaseEllipse());
-        p.getChildren().add(getEyePupil(250, 250));
-        p.getChildren().add(getEyePupil(440, 250));
-        p.getChildren().add(getNose());
-        
-        Scene scene = new Scene(p, 700, 700);
-        primaryStage.setTitle("Exercise 14.11");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-    public static void main(String[] args) {
-        Application.launch(args);
     }
 }
