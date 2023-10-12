@@ -34,7 +34,7 @@ class CheckBoardPane extends Pane {
             r.heightProperty().bind(heightProperty().divide(8));
 
             r.setFill(Color.RED);
-            if((row+col)%2 == 0) {
+            if((row+col) % 2 == 0) {
                 r.setFill(Color.BLACK);
             }
             getChildren().add(r);
